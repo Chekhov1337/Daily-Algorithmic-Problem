@@ -19,19 +19,33 @@
 # Task 2/150
 # 125. Valid Palindrome
 
-import re
+# import re
+#
+#
+# class Solution:
+#     def isPalindrome(self, s: str) -> bool:
+#         s = s.lower()
+#         s = re.sub(r'[-_.,+=&?<>{}[]|/! \]+', '', s)
+#
+#         for i in range(int(len(s) / 2)):
+#             if s[i] != s[-i - 1]:
+#                 return False
+#         return True
+#
+#
+# sol = Solution()
+# print(sol.isPalindrome('ab_a'))
 
+
+# Task 3/150
+# 136. Single Number
 
 class Solution:
-    def isPalindrome(self, s: str) -> bool:
-        s = s.lower()
-        s = re.sub(r'[-_.,+=&?<>{}[]|/! \]+', '', s)
+    def singleNumber(self, nums) -> int:
+        temp = 0
+        for n in nums:
+            temp = temp^n
 
-        for i in range(int(len(s) / 2)):
-            if s[i] != s[-i - 1]:
-                return False
-        return True
-
-
+        return temp
 sol = Solution()
-print(sol.isPalindrome('ab_a'))
+print(sol.singleNumber([2,2,1]))
