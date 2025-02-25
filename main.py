@@ -51,39 +51,21 @@
 # print(sol.singleNumber([2,2,1]))
 
 # Task 4/150
-# 168. Excel Sheet Column Title
+# 169. Majority Element
+import collections
+
 
 class Solution:
-    def convertToTitle(self, columnNumber: int) -> str:
-        if columnNumber <= 26:
-            return chr(columnNumber + 64)
-        else:
-            whole = columnNumber
-            output = ''
-            if whole % 26 != 0:
-                while whole > 26:
-                    remainder = whole % 26
-                    whole = whole // 26
-                    output = chr(remainder + 64) + output
+    def majorityElement(self, nums) -> int:
+        d = collections.defaultdict(int)
+        for n in nums:
+            d[n] += 1
 
-                output = chr(whole + 64) + output
-            else:
-                whole = whole - 1
-                n = 0
-                while whole > 26:
-                    remainder = whole % 26
-                    whole = whole // 26
-                    if n == 0:
-                        output = chr(remainder + 64 + 1) + output
-                    else:
-                        output = chr(remainder + 64) + output
-                    n += 1
+        d = sorted(d.items(), key=lambda x:x[1])
 
-                output = chr(whole + 64) + output
-
-        return output
+        return d[-1][0]
 
 
 sol = Solution()
-print(sol.convertToTitle(18278))
+print(sol.majorityElement([2, 2, 3]))
 # print(sol.convertToTitle(27))
