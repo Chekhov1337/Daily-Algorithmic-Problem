@@ -40,12 +40,50 @@
 # Task 3/150
 # 136. Single Number
 
-class Solution:
-    def singleNumber(self, nums) -> int:
-        temp = 0
-        for n in nums:
-            temp = temp^n
+# class Solution:
+#     def singleNumber(self, nums) -> int:
+#         temp = 0
+#         for n in nums:
+#             temp = temp^n
+#
+#         return temp
+# sol = Solution()
+# print(sol.singleNumber([2,2,1]))
 
-        return temp
+# Task 4/150
+# 168. Excel Sheet Column Title
+
+class Solution:
+    def convertToTitle(self, columnNumber: int) -> str:
+        if columnNumber <= 26:
+            return chr(columnNumber + 64)
+        else:
+            whole = columnNumber
+            output = ''
+            if whole % 26 != 0:
+                while whole > 26:
+                    remainder = whole % 26
+                    whole = whole // 26
+                    output = chr(remainder + 64) + output
+
+                output = chr(whole + 64) + output
+            else:
+                whole = whole - 1
+                n = 0
+                while whole > 26:
+                    remainder = whole % 26
+                    whole = whole // 26
+                    if n == 0:
+                        output = chr(remainder + 64 + 1) + output
+                    else:
+                        output = chr(remainder + 64) + output
+                    n += 1
+
+                output = chr(whole + 64) + output
+
+        return output
+
+
 sol = Solution()
-print(sol.singleNumber([2,2,1]))
+print(sol.convertToTitle(18278))
+# print(sol.convertToTitle(27))
