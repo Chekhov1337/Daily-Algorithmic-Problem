@@ -73,17 +73,34 @@ import collections
 # Task 5/150
 # 171. Excel Sheet Column Number
 
+# class Solution:
+#     def titleToNumber(self, columnTitle: str) -> int:
+#         title = reversed(columnTitle)
+#         res = 0
+#         n = 0
+#         for c in title:
+#             res += 26 ** n * (ord(c) - 64)
+#             n += 1
+#
+#         return res
+#
+#
+# sol = Solution()
+# print(sol.titleToNumber('AAAB'))
+
+# Task 6/150
+# 191. Number of 1 Bits
+
 class Solution:
-    def titleToNumber(self, columnTitle: str) -> int:
-        title = reversed(columnTitle)
+    def hammingWeight(self, n: int) -> int:
+        bin = '{0:b}'.format(n)
         res = 0
-        n = 0
-        for c in title:
-            res += 26 ** n * (ord(c) - 64)
-            n += 1
+        for n in bin:
+            if n == '1':
+                res +=1
 
         return res
 
 
 sol = Solution()
-print(sol.titleToNumber('AAAB'))
+print(sol.hammingWeight(128))
