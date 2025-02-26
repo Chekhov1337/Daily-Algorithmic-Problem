@@ -55,17 +55,35 @@
 import collections
 
 
+# class Solution:
+#     def majorityElement(self, nums) -> int:
+#         d = collections.defaultdict(int)
+#         for n in nums:
+#             d[n] += 1
+#
+#         d = sorted(d.items(), key=lambda x:x[1])
+#
+#         return d[-1][0]
+#
+#
+# sol = Solution()
+# print(sol.majorityElement([2, 2, 3]))
+# # print(sol.convertToTitle(27))
+
+# Task 5/150
+# 171. Excel Sheet Column Number
+
 class Solution:
-    def majorityElement(self, nums) -> int:
-        d = collections.defaultdict(int)
-        for n in nums:
-            d[n] += 1
+    def titleToNumber(self, columnTitle: str) -> int:
+        title = reversed(columnTitle)
+        res = 0
+        n = 0
+        for c in title:
+            res += 26 ** n * (ord(c) - 64)
+            n += 1
 
-        d = sorted(d.items(), key=lambda x:x[1])
-
-        return d[-1][0]
+        return res
 
 
 sol = Solution()
-print(sol.majorityElement([2, 2, 3]))
-# print(sol.convertToTitle(27))
+print(sol.titleToNumber('AAAB'))
