@@ -108,23 +108,48 @@ import collections
 # Task 7/150
 # 168. Excel Sheet Column Title
 
+# class Solution:
+#     def convertToTitle(self, columnNumber: int) -> str:
+#         res = ''
+#         whole = columnNumber
+#         remainder = 0
+#         while whole > 26:
+#             remainder = whole % 26
+#             whole = whole // 26
+#             if remainder != 0:
+#                 res = chr(remainder + 64) + res
+#             else:
+#                 res = chr(26 + 64) + res
+#                 whole -= 1
+#
+#         res = chr(whole + 64) + res
+#         return res
+#
+#
+# sol = Solution()
+# print(sol.convertToTitle(52))
+
+# Task 8/150
+# 202. Happy Number
+
 class Solution:
-    def convertToTitle(self, columnNumber: int) -> str:
-        res = ''
-        whole = columnNumber
-        remainder = 0
-        while whole > 26:
-            remainder = whole % 26
-            whole = whole // 26
-            if remainder != 0:
-                res = chr(remainder + 64) + res
-            else:
-                res = chr(26 + 64) + res
-                whole -= 1
+    def isHappy(self, n: int) -> bool:
+        if n == 1:
+            return True
+        curr = n
+        summ = 0
+        history = []
+        while summ != 1:
+            summ = 0
+            history.append(curr)
+            for n in range(len(str(curr))):
+                summ += (curr % 10) ** 2
+                curr = curr // 10
+            curr = summ
+            if curr in history:
+                return False
 
-        res = chr(whole + 64) + res
-        return res
-
+        return True
 
 sol = Solution()
-print(sol.convertToTitle(52))
+print(sol.isHappy(19))
