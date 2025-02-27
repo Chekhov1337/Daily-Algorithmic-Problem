@@ -91,16 +91,40 @@ import collections
 # Task 6/150
 # 191. Number of 1 Bits
 
-class Solution:
-    def hammingWeight(self, n: int) -> int:
-        bin = '{0:b}'.format(n)
-        res = 0
-        for n in bin:
-            if n == '1':
-                res +=1
+# class Solution:
+#     def hammingWeight(self, n: int) -> int:
+#         bin = '{0:b}'.format(n)
+#         res = 0
+#         for n in bin:
+#             if n == '1':
+#                 res +=1
+#
+#         return res
+#
+#
+# sol = Solution()
+# print(sol.hammingWeight(128))
 
+# Task 7/150
+# 168. Excel Sheet Column Title
+
+class Solution:
+    def convertToTitle(self, columnNumber: int) -> str:
+        res = ''
+        whole = columnNumber
+        remainder = 0
+        while whole > 26:
+            remainder = whole % 26
+            whole = whole // 26
+            if remainder != 0:
+                res = chr(remainder + 64) + res
+            else:
+                res = chr(26 + 64) + res
+                whole -= 1
+
+        res = chr(whole + 64) + res
         return res
 
 
 sol = Solution()
-print(sol.hammingWeight(128))
+print(sol.convertToTitle(52))
