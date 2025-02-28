@@ -159,34 +159,73 @@ from typing import Optional
 # 203. Remove Linked List Elements
 
 # Definition for singly-linked list.
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-class Solution:
-    def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
-        dummy = ListNode(0, head)
-        prev = dummy
-        curr = head
-        while curr is not None:
-            if curr.val != val:
-                prev = curr
-                curr = curr.next
-            else:
-                if curr.next is not None:
-                    prev.next = curr.next
-                    curr = curr.next
-                else:
-                    prev.next = None
-                    curr = prev
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+# class Solution:
+#     def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
+#         dummy = ListNode(0, head)
+#         prev = dummy
+#         curr = head
+#         while curr is not None:
+#             if curr.val != val:
+#                 prev = curr
+#                 curr = curr.next
+#             else:
+#                 if curr.next is not None:
+#                     prev.next = curr.next
+#                     curr = curr.next
+#                 else:
+#                     prev.next = None
+#                     curr = prev
+#
+#         return dummy.next
+#
+# sol = Solution()
+# head = ListNode(1, ListNode(2, ListNode(3, ListNode(5, ListNode(4)))))
+# new_head = sol.removeElements(head, 2)
+#
+# while new_head.next is not None:
+#     print(new_head.val)
+#     new_head = head.next
 
-        return dummy.next
+# Task 10/150
+# 205. Isomorphic Strings
+
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        s_dict = dict()
+        t_dict = dict()
+        s_new = str()
+        t_new = str()
+
+        n = 0
+        if len(s) != len(t):
+            return False
+        else:
+            for c in s:
+                if c in s_dict.keys():
+                    s_new = s_new + str(s_dict[c]) + '.'
+                else:
+                    s_dict[c] = n
+                    n += 1
+                    s_new = s_new + str(s_dict[c]) + '.'
+
+            n = 0
+            for c in t:
+                if c in t_dict.keys():
+                    t_new = t_new + str(t_dict[c]) + '.'
+                else:
+                    t_dict[c] = n
+                    n += 1
+                    t_new = t_new + str(t_dict[c]) + '.'
+
+            if t_new == s_new:
+                return True
+            else:
+                return False
+
 
 sol = Solution()
-head = ListNode(1, ListNode(2, ListNode(3, ListNode(5, ListNode(4)))))
-new_head = sol.removeElements(head, 2)
-
-while new_head.next is not None:
-    print(new_head.val)
-    new_head = head.next
-
+print(sol.isIsomorphic('abcdefghijklmnopqrstuvwxyzva', 'abcdefghijklmnopqrstuvwxyzck'))
