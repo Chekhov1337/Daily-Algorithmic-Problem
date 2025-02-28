@@ -53,6 +53,7 @@
 # Task 4/150
 # 169. Majority Element
 import collections
+from typing import Optional
 
 
 # class Solution:
@@ -132,24 +133,60 @@ import collections
 # Task 8/150
 # 202. Happy Number
 
-class Solution:
-    def isHappy(self, n: int) -> bool:
-        if n == 1:
-            return True
-        curr = n
-        summ = 0
-        history = []
-        while summ != 1:
-            summ = 0
-            history.append(curr)
-            for n in range(len(str(curr))):
-                summ += (curr % 10) ** 2
-                curr = curr // 10
-            curr = summ
-            if curr in history:
-                return False
+# class Solution:
+#     def isHappy(self, n: int) -> bool:
+#         if n == 1:
+#             return True
+#         curr = n
+#         summ = 0
+#         history = []
+#         while summ != 1:
+#             summ = 0
+#             history.append(curr)
+#             for n in range(len(str(curr))):
+#                 summ += (curr % 10) ** 2
+#                 curr = curr // 10
+#             curr = summ
+#             if curr in history:
+#                 return False
+#
+#         return True
+#
+# sol = Solution()
+# print(sol.isHappy(19))
 
-        return True
+# Task 9/150
+# 203. Remove Linked List Elements
+
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+class Solution:
+    def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
+        dummy = ListNode(0, head)
+        prev = dummy
+        curr = head
+        while curr is not None:
+            if curr.val != val:
+                prev = curr
+                curr = curr.next
+            else:
+                if curr.next is not None:
+                    prev.next = curr.next
+                    curr = curr.next
+                else:
+                    prev.next = None
+                    curr = prev
+
+        return dummy.next
 
 sol = Solution()
-print(sol.isHappy(19))
+head = ListNode(1, ListNode(2, ListNode(3, ListNode(5, ListNode(4)))))
+new_head = sol.removeElements(head, 2)
+
+while new_head.next is not None:
+    print(new_head.val)
+    new_head = head.next
+
