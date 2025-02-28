@@ -55,7 +55,6 @@
 import collections
 from typing import Optional
 
-
 # class Solution:
 #     def majorityElement(self, nums) -> int:
 #         d = collections.defaultdict(int)
@@ -193,39 +192,49 @@ from typing import Optional
 # Task 10/150
 # 205. Isomorphic Strings
 
+# class Solution:
+#     def isIsomorphic(self, s: str, t: str) -> bool:
+#         s_dict = dict()
+#         t_dict = dict()
+#         s_new = str()
+#         t_new = str()
+#
+#         n = 0
+#         if len(s) != len(t):
+#             return False
+#         else:
+#             for c in s:
+#                 if c in s_dict.keys():
+#                     s_new = s_new + str(s_dict[c]) + '.'
+#                 else:
+#                     s_dict[c] = n
+#                     n += 1
+#                     s_new = s_new + str(s_dict[c]) + '.'
+#
+#             n = 0
+#             for c in t:
+#                 if c in t_dict.keys():
+#                     t_new = t_new + str(t_dict[c]) + '.'
+#                 else:
+#                     t_dict[c] = n
+#                     n += 1
+#                     t_new = t_new + str(t_dict[c]) + '.'
+#
+#             if t_new == s_new:
+#                 return True
+#             else:
+#                 return False
+
+
+# sol = Solution()
+# print(sol.isIsomorphic('paper', 'title'))
+
+# Task 11/150
+# 217. Contains Duplicate
+
 class Solution:
-    def isIsomorphic(self, s: str, t: str) -> bool:
-        s_dict = dict()
-        t_dict = dict()
-        s_new = str()
-        t_new = str()
-
-        n = 0
-        if len(s) != len(t):
-            return False
+    def containsDuplicate(self, nums) -> bool:
+        if len(set(nums)) != len(nums):
+            return True
         else:
-            for c in s:
-                if c in s_dict.keys():
-                    s_new = s_new + str(s_dict[c]) + '.'
-                else:
-                    s_dict[c] = n
-                    n += 1
-                    s_new = s_new + str(s_dict[c]) + '.'
-
-            n = 0
-            for c in t:
-                if c in t_dict.keys():
-                    t_new = t_new + str(t_dict[c]) + '.'
-                else:
-                    t_dict[c] = n
-                    n += 1
-                    t_new = t_new + str(t_dict[c]) + '.'
-
-            if t_new == s_new:
-                return True
-            else:
-                return False
-
-
-sol = Solution()
-print(sol.isIsomorphic('abcdefghijklmnopqrstuvwxyzva', 'abcdefghijklmnopqrstuvwxyzck'))
+            return False
