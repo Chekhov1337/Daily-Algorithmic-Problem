@@ -320,24 +320,36 @@ class Solution:
 # Task 16/150
 # 263. Ugly Number
 
+# class Solution:
+#     def isUgly(self, n: int) -> bool:
+#         if n ==0:
+#             return False
+#         while n % 5 == 0:
+#             n = n // 5
+#         while n % 3 == 0:
+#             n = n // 3
+#         while n % 2 == 0:
+#             n = n // 2
+#
+#         if n == 1:
+#             return True
+#         else:
+#             return False
+#
+#
+#
+#
+# sol = Solution()
+# print(sol.isUgly(14))
+
+# Task 17/150
+# 268. Missing Number
+
 class Solution:
-    def isUgly(self, n: int) -> bool:
-        if n ==0:
-            return False
-        while n % 5 == 0:
-            n = n // 5
-        while n % 3 == 0:
-            n = n // 3
-        while n % 2 == 0:
-            n = n // 2
-
-        if n == 1:
-            return True
-        else:
-            return False
-
+    def missingNumber(self, nums: List[int]) -> int:
+        print([0,1,2]-[0,1])
 
 
 
 sol = Solution()
-print(sol.isUgly(14))
+print(sol.missingNumber([0,1]))
