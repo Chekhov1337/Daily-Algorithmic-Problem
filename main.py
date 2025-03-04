@@ -243,30 +243,50 @@ from typing import Optional, List
 # Task 12/150
 # 228. Summary Ranges
 
-class Solution:
-    def summaryRanges(self, nums: List[int]) -> List[str]:
-        if len(nums) == 0:
-            return []
-        start = nums[0]
-        end = nums[0]
-        ranges = []
-        for i in range(len(nums)):
-            if i != len(nums) - 1:
-                if nums[i] + 1 != nums[i+1]:
-                    end = nums[i]
-                    if start != end:
-                        ranges.append(f'{start}->{end}')
-                    else:
-                        ranges.append(f'{start}')
-                    start = nums[i+1]
-            else:
-                end = nums[i]
-                if start != end:
-                    ranges.append(f'{start}->{end}')
-                else:
-                    ranges.append(f'{start}')
+# class Solution:
+#     def summaryRanges(self, nums: List[int]) -> List[str]:
+#         if len(nums) == 0:
+#             return []
+#         start = nums[0]
+#         end = nums[0]
+#         ranges = []
+#         for i in range(len(nums)):
+#             if i != len(nums) - 1:
+#                 if nums[i] + 1 != nums[i+1]:
+#                     end = nums[i]
+#                     if start != end:
+#                         ranges.append(f'{start}->{end}')
+#                     else:
+#                         ranges.append(f'{start}')
+#                     start = nums[i+1]
+#             else:
+#                 end = nums[i]
+#                 if start != end:
+#                     ranges.append(f'{start}->{end}')
+#                 else:
+#                     ranges.append(f'{start}')
+#
+#         return ranges
+#
+# sol = Solution()
+# print(sol.summaryRanges([0,1,2,4,5,7]))
 
-        return ranges
+# Task 13/150
+# 231. Power of Two
+
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+        n_bin = "{0:b}".format(n)
+        res = 0
+        if n < 1:
+            return False
+        for n in n_bin:
+            if n == '1':
+                res +=1
+                if res > 1:
+                    return False
+
+        return True
 
 sol = Solution()
-print(sol.summaryRanges([0,1,2,4,5,7]))
+print(sol.isPowerOfTwo(1))
