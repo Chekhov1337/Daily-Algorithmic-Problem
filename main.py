@@ -297,3 +297,22 @@ from typing import Optional, List
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         return sorted(s) == sorted(t)
+
+# Task 15/150
+# 258. Add Digits
+
+class Solution:
+    def addDigits(self, num: int) -> int:
+        summ = int
+        while len(str(summ)) > 1:
+            summ = 0
+            for n in range(len(str(num))):
+                summ += num % 10
+                num = num // 10
+
+            num = summ
+
+        return summ
+
+sol = Solution()
+print(sol.addDigits(38))
