@@ -274,19 +274,26 @@ from typing import Optional, List
 # Task 13/150
 # 231. Power of Two
 
+# class Solution:
+#     def isPowerOfTwo(self, n: int) -> bool:
+#         n_bin = "{0:b}".format(n)
+#         res = 0
+#         if n < 1:
+#             return False
+#         for n in n_bin:
+#             if n == '1':
+#                 res +=1
+#                 if res > 1:
+#                     return False
+#
+#         return True
+#
+# sol = Solution()
+# print(sol.isPowerOfTwo(1))
+
+# Task 14/150
+# 242. Valid Anagram
+
 class Solution:
-    def isPowerOfTwo(self, n: int) -> bool:
-        n_bin = "{0:b}".format(n)
-        res = 0
-        if n < 1:
-            return False
-        for n in n_bin:
-            if n == '1':
-                res +=1
-                if res > 1:
-                    return False
-
-        return True
-
-sol = Solution()
-print(sol.isPowerOfTwo(1))
+    def isAnagram(self, s: str, t: str) -> bool:
+        return sorted(s) == sorted(t)
