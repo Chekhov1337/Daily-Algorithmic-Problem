@@ -53,7 +53,8 @@
 # Task 4/150
 # 169. Majority Element
 import collections
-from typing import Optional
+from typing import Optional, List
+
 
 # class Solution:
 #     def majorityElement(self, nums) -> int:
@@ -232,9 +233,40 @@ from typing import Optional
 # Task 11/150
 # 217. Contains Duplicate
 
+# class Solution:
+#     def containsDuplicate(self, nums) -> bool:
+#         if len(set(nums)) != len(nums):
+#             return True
+#         else:
+#             return False
+
+# Task 12/150
+# 228. Summary Ranges
+
 class Solution:
-    def containsDuplicate(self, nums) -> bool:
-        if len(set(nums)) != len(nums):
-            return True
-        else:
-            return False
+    def summaryRanges(self, nums: List[int]) -> List[str]:
+        if len(nums) == 0:
+            return []
+        start = nums[0]
+        end = nums[0]
+        ranges = []
+        for i in range(len(nums)):
+            if i != len(nums) - 1:
+                if nums[i] + 1 != nums[i+1]:
+                    end = nums[i]
+                    if start != end:
+                        ranges.append(f'{start}->{end}')
+                    else:
+                        ranges.append(f'{start}')
+                    start = nums[i+1]
+            else:
+                end = nums[i]
+                if start != end:
+                    ranges.append(f'{start}->{end}')
+                else:
+                    ranges.append(f'{start}')
+
+        return ranges
+
+sol = Solution()
+print(sol.summaryRanges([0,1,2,4,5,7]))
