@@ -301,18 +301,43 @@ class Solution:
 # Task 15/150
 # 258. Add Digits
 
+# class Solution:
+#     def addDigits(self, num: int) -> int:
+#         summ = int
+#         while len(str(summ)) > 1:
+#             summ = 0
+#             for n in range(len(str(num))):
+#                 summ += num % 10
+#                 num = num // 10
+#
+#             num = summ
+#
+#         return summ
+#
+# sol = Solution()
+# print(sol.addDigits(38))
+
+# Task 16/150
+# 263. Ugly Number
+
 class Solution:
-    def addDigits(self, num: int) -> int:
-        summ = int
-        while len(str(summ)) > 1:
-            summ = 0
-            for n in range(len(str(num))):
-                summ += num % 10
-                num = num // 10
+    def isUgly(self, n: int) -> bool:
+        if n ==0:
+            return False
+        while n % 5 == 0:
+            n = n // 5
+        while n % 3 == 0:
+            n = n // 3
+        while n % 2 == 0:
+            n = n // 2
 
-            num = summ
+        if n == 1:
+            return True
+        else:
+            return False
 
-        return summ
+
+
 
 sol = Solution()
-print(sol.addDigits(38))
+print(sol.isUgly(14))
