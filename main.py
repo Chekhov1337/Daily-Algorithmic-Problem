@@ -298,6 +298,7 @@ class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         return sorted(s) == sorted(t)
 
+
 # Task 15/150
 # 258. Add Digits
 
@@ -345,11 +346,47 @@ class Solution:
 # Task 17/150
 # 268. Missing Number
 
-class Solution:
-    def missingNumber(self, nums: List[int]) -> int:
-        print([0,1,2]-[0,1])
+# class Solution:
+#     def missingNumber(self, nums: List[int]) -> int:
+#         print([0,1,2]-[0,1])
+#
+#
+#
+# sol = Solution()
+# print(sol.missingNumber([0,1]))
 
+# Task 18/150
+# 290. Word Pattern
+
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        # if len(pattern) == len(s.split(' ')) and len(pattern) == 1:
+        #     return True
+        # if pattern == s.replace(' ', '') and pattern != s:
+        #     return True
+        s = s.split(' ')
+        d_pattern = dict()
+        d_s = dict()
+        n = 0
+        check_s = str()
+        check_pattern = str()
+        for w in s:
+            if w not in d_s.keys():
+                d_s[w] = chr(97 + n)
+                n += 1
+        n = 0
+        for c in pattern:
+            if c not in d_pattern.keys():
+                d_pattern[c] = chr(97 + n)
+                n += 1
+
+        for w in s:
+            check_s += d_s[w]
+        for c in pattern:
+            check_pattern += d_pattern[c]
+
+        return check_pattern == check_s
 
 
 sol = Solution()
-print(sol.missingNumber([0,1]))
+print(sol.wordPattern(pattern="abba", s="dog cat cat dog"))
